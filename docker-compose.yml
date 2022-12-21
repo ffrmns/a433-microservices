@@ -1,0 +1,30 @@
+# 'schema version' dari docker compose
+version: "3.7"
+# service yang dijalankan berurutan
+services:
+  # service pertama bernama item-db
+  item-db:
+    # image yang digunakan mongo:3 dari dockerhub
+    image: mongo:3
+    # menggunakan volumme app-db
+    volumes:
+      # volume app-db dimapping ke /data/db di kontainer
+      - app-db:/data/db
+    # selalu restart ketika mati
+    restart: always
+  # service kedua bernama item-app
+  item-app:
+    # image yang digunakan dari hasil build, diambil dari github packages
+    image: ghcr.io/ffrmns/item-app:v1
+    # memetakan port
+    ports:
+      # memetakan port 8080 di container ke 80 milik host
+      - 80:8080
+    # menggunakan path di container /app sebagai working directory
+    working_dir: /app
+    # selalu restart ketika mati
+    restart: always
+# volume-volume yang digunakan
+volumes:
+# hanya ada satu docker volume yang dibuat bernama app-db
+  app-db:

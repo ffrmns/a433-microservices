@@ -1,0 +1,12 @@
+Network a433-microservices_default  Creating
+Network a433-microservices_default  Created
+Volume "a433-microservices_app-db"  Creating
+Volume "a433-microservices_app-db"  Created
+Container a433-microservices-item-app-1  Creating
+Container a433-microservices-item-db-1  Creating
+Container a433-microservices-item-app-1  Created
+Container a433-microservices-item-db-1  Created
+Container a433-microservices-item-db-1  Starting
+Container a433-microservices-item-app-1  Starting
+Container a433-microservices-item-db-1  Started
+Container a433-microservices-item-app-1  Started
