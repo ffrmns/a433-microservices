@@ -1,2 +1,2 @@
 https://github.com/ffrmns/a433-microservices
-ghcr.io/ffrmns/item-app
+https://ghcr.io/ffrmns/item-app
