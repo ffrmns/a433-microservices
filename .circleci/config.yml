@@ -1,0 +1,28 @@
+version: 2.1
+orbs:
+  docker: circleci/docker@2.2.0
+# Define the jobs we want to run for this project
+jobs:
+  lint-dockerfile:
+    executor: docker/hadolint
+    steps:
+      - checkout
+      - docker/hadolint:
+          dockerfiles: Dockerfile
+  build-app-karsajobs-ui:
+    executor: docker/docker
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: default
+      - run: |
+          . build_push_image_karsajobs_ui.sh
+
+# Orchestrate our job run sequence
+workflows:
+  lint-dockerfile:
+    jobs:
+      - lint-dockerfile
+  build-app-karsajobs-ui:
+    jobs:
+      - build-app-karsajobs-ui
