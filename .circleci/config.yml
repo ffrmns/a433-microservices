@@ -20,8 +20,10 @@ jobs:
     executor: docker/docker
     steps:
       - checkout
+      - setup_remote_docker:
+          version: default
       - run: |
-          sh build_push_image_karsajobs.sh
+          . build_push_image_karsajobs.sh
 
 # Orchestrate our job run sequence
 workflows:
