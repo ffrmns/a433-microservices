@@ -15,16 +15,13 @@ jobs:
     steps:
       - checkout
       - run: |
-          "cd /go/src/github.com/dicodingacademy/karsajobs/go/src/github.com/dicodingacademy/karsajobs"
-          "go test -v -short --count=1 $(go list ./...)"
+          go test -v -short --count=1 $(go list ./...)
   build-app-karsajobs:
     executor: docker/docker
     steps:
       - checkout
       - run: |
-          echo $CR_PAT | docker login ghcr.io -u ffrmns --password-stdin
-          chmod +x build_push_image_karsajobs.sh
-          ./build_push_image_karsajobs.sh
+          sh build_push_image_karsajobs.sh
 
 # Orchestrate our job run sequence
 workflows:

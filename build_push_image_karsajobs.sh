@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Membuat docker image dari dockerfile
 docker build -t karsajobs:latest .
