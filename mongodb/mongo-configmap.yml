@@ -1,7 +1,9 @@
+# Versi API Kubernetes v1 untuk jenis objek ConfigMap
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mongo-config
+# Mengisi file mongo.conf
 data:
   mongo.conf: |
     storage:

@@ -1,3 +1,4 @@
+# Versi API Kubernetes v1 untuk jenis objek Namespace membuat namespace karsajobs
 apiVersion: v1
 kind: Namespace
 metadata:

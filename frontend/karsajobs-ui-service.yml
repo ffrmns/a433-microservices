@@ -1,9 +1,11 @@
+# Versi API Kubernetes v1 untuk jenis objek Service
 apiVersion: v1
 kind: Service
 metadata:
   name: karsajobs-ui-service
   labels:
     app: karsajobs
+# Membuat jaringan NodePort yang dapat diakses host
 spec:
   ports:
   - port: 8000

@@ -1,3 +1,4 @@
+# Versi API Kubernetes apps/v1 untuk jenis objek Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -10,6 +11,7 @@ spec:
   selector:
     matchLabels:
       tier: frontend
+  # Template dari pod kontainer
   template:
     metadata:
       labels:

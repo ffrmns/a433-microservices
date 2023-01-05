@@ -1,3 +1,4 @@
+# Versi API Kubernetes v1 untuk jenis objek PersistentVolume
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -13,6 +14,7 @@ spec:
   hostPath:
     path: "/mnt/data/mongo"
 ---
+# Versi API Kubernetes v1 untuk jenis objek PersistentVolumeClaim
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

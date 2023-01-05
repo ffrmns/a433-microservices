@@ -1,3 +1,4 @@
+# Versi API Kubernetes apps/v1 untuk jenis objek StatefulSet
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -13,6 +14,7 @@ spec:
   serviceName: mongo-service
   replicas: 1
   minReadySeconds: 10
+  # Template dari pod kontainer
   template:
     metadata:
       labels:
