@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: karsajobs-statefulset
+  labels:
+    app: karsajobs
+    tier: database
+spec:
+  selector:
+    matchLabels:
+      app: karsajobs
+      tier: database
+  serviceName: mongo-service
+  replicas: 1
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: karsajobs
+        tier: database
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: karsajobs-mongo
+        image: mongo
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME_FILE
+          value: /etc/mongo-credentials/MONGO_ROOT_USERNAME
+        - name: MONGO_INITDB_ROOT_PASSWORD_FILE
+          value: /etc/mongo-credentials/MONGO_ROOT_PASSWORD
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongo-pv
+          mountPath: /data/db
+        - name: mongo-config
+          mountPath: /config
+        - name: mongo-secret
+          mountPath: /etc/mongo-credentials
+      volumes:
+      - name: mongo-pv
+        persistentVolumeClaim:
+          claimName: mongo-pv-claim
+      - name: mongo-config
+        configMap:
+          name: mongo-config
+      - name: mongo-secret
+        secret:
+          secretName: mongo-secret
